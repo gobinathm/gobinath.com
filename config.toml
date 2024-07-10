@@ -1,0 +1,26 @@
+languageCode = "en"
+defaultContentLanguage = "en"
+
+title = "Gobinath Mallaiyan"
+copyright = "Copy, _right?_ :thinking_face:"
+
+enableEmoji = true
+disableKinds = ["taxonomy", "term"]
+
+[params.author]
+  name = "Gobinath Mallaiyan"
+  headline = "Software Engineer by profession, photographer at heart, and a relentless fitness enthusiast"
+  image = "img/gobi.jpg"
+
+  links = [
+    { linkedin = "https://linkedin.com/in/gobinathm" },
+    { github = "https://github.com/gobinathm" },
+    { instagram = "https://instagram.com/gobinathm" },
+    { medium = "https://medium.com/@gobinathm" },
+    { stack-overflow = "https://stackoverflow.com/users/1288968/gobinath-mallaiyan" },
+  ]
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.86.1"
