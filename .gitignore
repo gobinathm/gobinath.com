@@ -3,6 +3,8 @@
 /public/*
 !/public/img/
 !/public/img/logo.jpg
+!/public/site.webmanifest
+!/public/*.png
 /resources/_gen/
 /assets/jsconfig.json
 hugo_stats.json
