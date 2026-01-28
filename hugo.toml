@@ -1,6 +1,12 @@
 baseURL = "https://gobinath.com/"
 languageCode = "en-us"
 title = "Gobinath Mallaiyan"
+enableRobotsTXT = false
+
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 0.5
 
 [build]
   [build.buildStats]
