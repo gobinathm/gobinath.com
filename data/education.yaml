@@ -70,3 +70,9 @@ certifications:
     issuer: NIIT
     year: "Apr 2002"
     sortDate: "2002-04"
+
+  - name: GitHub Actions
+    issuer: NIIT
+    year: "Jan 2026"
+    sortDate: "2026-01"
+    url: "https://learn.microsoft.com/api/credentials/share/en-us/gobinathm/1D482C674772339"
