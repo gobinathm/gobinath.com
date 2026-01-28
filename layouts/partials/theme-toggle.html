@@ -1,24 +1,17 @@
 <script>
 (function() {
-  const html = document.documentElement;
-  const btn = document.getElementById('theme-toggle-btn');
-  const stored = localStorage.getItem('theme');
-  if (stored === 'light') {
-    html.classList.remove('dark');
-    html.classList.add('light');
-  } else {
-    html.classList.add('dark');
-    html.classList.remove('light');
-  }
+  var html = document.documentElement;
+  var btn = document.getElementById('theme-toggle-btn');
+
   btn && btn.addEventListener('click', function() {
-    const isDark = html.classList.contains('dark');
+    var isDark = html.classList.contains('dark');
     html.classList.toggle('dark', !isDark);
     html.classList.toggle('light', isDark);
     localStorage.setItem('theme', isDark ? 'light' : 'dark');
   });
 
   // IntersectionObserver for timeline animations
-  const observer = new IntersectionObserver(function(entries) {
+  var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('animate-fade-in-up');
