@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #10b981;
+  --color-accent-light: #34d399;
+  --color-surface: #ffffff;
+  --color-surface-dark: #0a0a0a;
+  --color-surface-alt: #f4f4f5;
+  --color-surface-alt-dark: #171717;
+  --color-text: #18181b;
+  --color-text-dark: #f4f4f5;
+  --color-text-muted: #71717a;
+  --color-text-muted-dark: #a1a1aa;
+  --color-border: #e4e4e7;
+  --color-border-dark: #27272a;
+}
+
+/* Timeline animation */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Skill cloud tags */
+.skill-cloud-tag {
+  @apply inline-block rounded-full cursor-default transition-all duration-300 border;
+}
+
+.dark .skill-cloud-tag {
+  @apply border-neutral-700/50 text-neutral-300;
+  background: linear-gradient(135deg, rgba(23,23,23,0.8), rgba(38,38,38,0.6));
+}
+.dark .skill-cloud-tag:hover {
+  @apply border-emerald-500/60 text-emerald-400 scale-110;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15), inset 0 0 20px rgba(16, 185, 129, 0.05);
+  background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.05));
+}
+
+.light .skill-cloud-tag {
+  @apply border-neutral-200 text-neutral-600;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(244,244,245,0.8));
+}
+.light .skill-cloud-tag:hover {
+  @apply border-emerald-400/60 text-emerald-600 scale-110;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.1), inset 0 0 20px rgba(16, 185, 129, 0.03);
+  background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(16,185,129,0.03));
+}
+
+/* Staggered floating animation for skill tags */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.skill-cloud-tag:nth-child(3n)   { animation: float 4s ease-in-out infinite; }
+.skill-cloud-tag:nth-child(3n+1) { animation: float 5s ease-in-out 0.5s infinite; }
+.skill-cloud-tag:nth-child(3n+2) { animation: float 6s ease-in-out 1s infinite; }
+
+.skill-cloud-tag:hover {
+  animation-play-state: paused;
+}
+
+/* Hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.social-icon {
+  @apply dark:text-neutral-500 text-neutral-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors;
+}

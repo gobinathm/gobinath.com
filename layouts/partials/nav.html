@@ -1,0 +1,28 @@
+<nav class="sticky top-0 z-50 backdrop-blur-md dark:bg-surface-dark/80 bg-surface/80 border-b dark:border-border-dark border-border">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="group relative flex items-center gap-1" aria-label="Home">
+      <!-- Left decorative chevron -->
+      <span class="text-emerald-500 text-lg font-light opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-x-0.5">&lt;</span>
+      <!-- Monogram -->
+      <span class="relative font-mono text-xl tracking-tight">
+        <span class="dark:text-white text-neutral-900 font-bold">G</span><span class="dark:text-neutral-500 text-neutral-400 font-light group-hover:dark:text-emerald-400 group-hover:text-emerald-600 transition-colors duration-300">M</span>
+        <!-- Underline accent -->
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 group-hover:w-full transition-all duration-300"></span>
+      </span>
+      <!-- Right decorative slash -->
+      <span class="text-emerald-500 text-lg font-light opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-0.5">/&gt;</span>
+    </a>
+    <div class="flex items-center gap-6">
+      <div class="hidden sm:flex items-center gap-4 text-sm font-medium">
+        <a href="https://gobinath.com" class="dark:text-text-dark text-text hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Home</a>
+        <a href="https://blog.gobinath.com" class="dark:text-text-muted-dark text-text-muted hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Blog</a>
+        <a href="https://writings.gobinath.com" class="dark:text-text-muted-dark text-text-muted hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Writings</a>
+        <a href="https://notes.gobinath.com" class="dark:text-text-muted-dark text-text-muted hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Notes</a>
+      </div>
+      <button id="theme-toggle-btn" aria-label="Toggle theme" class="p-2 rounded-lg dark:hover:bg-surface-alt-dark hover:bg-surface-alt transition-colors">
+        <svg id="moon-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg id="sun-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>

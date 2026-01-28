@@ -1,0 +1,21 @@
+baseURL = "https://gobinath.com/"
+languageCode = "en-us"
+title = "Gobinath Mallaiyan"
+
+[build]
+  [build.buildStats]
+    enable = true
+
+[params]
+  description = "Technical Program Manager | AI/ML Enthusiast | Aspiring CTO"
+  author = "Gobinath Mallaiyan"
+  formspreeID = "xeegwavv"
+
+  [params.social]
+    linkedin = "https://www.linkedin.com/in/gobinath/"
+    github = "https://github.com/gobinathm"
+    instagram = "https://www.instagram.com/gobinathm/"
+    medium = "https://medium.com/@gobinathm"
+    stackoverflow = "https://stackoverflow.com/users/1745498/gobinath"
+    fivehundredpx = "https://500px.com/p/gobinathm"
+    strava = "https://www.strava.com/athletes/gobinathm"

@@ -1,0 +1,33 @@
+<section class="max-w-5xl mx-auto px-4 py-12">
+  <div class="grid md:grid-cols-2 gap-12">
+    <div>
+      <h2 class="text-3xl font-bold mb-8">Education</h2>
+      {{ range .Site.Data.education.education }}
+      <div class="mb-6 dark:bg-surface-alt-dark bg-surface-alt rounded-lg p-5">
+        <h3 class="font-semibold">{{ .degree }}</h3>
+        <p class="text-sm dark:text-text-muted-dark text-text-muted">{{ .institution }}</p>
+        <p class="text-sm font-mono text-emerald-500">{{ .years }}</p>
+      </div>
+      {{ end }}
+    </div>
+    <div>
+      <h2 class="text-3xl font-bold mb-8">Certifications</h2>
+      {{ range sort .Site.Data.education.certifications "sortDate" "desc" }}
+      <div class="mb-4 flex items-start gap-3">
+        <svg class="w-5 h-5 mt-0.5 shrink-0 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div>
+          {{ if .url }}
+          <a href="{{ .url }}" target="_blank" rel="noopener" class="group/cert font-medium leading-snug inline-flex items-center gap-1 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
+            {{ .name }}
+            <svg class="w-3.5 h-3.5 opacity-0 group-hover/cert:opacity-100 transition-opacity shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+          {{ else }}
+          <p class="font-medium leading-snug">{{ .name }}</p>
+          {{ end }}
+          <p class="text-sm"><span class="dark:text-text-muted-dark text-text-muted">{{ .issuer }}</span>{{ with .year }} <span class="font-mono text-emerald-500">&middot; {{ . }}</span>{{ end }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

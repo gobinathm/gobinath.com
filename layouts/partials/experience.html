@@ -1,0 +1,68 @@
+<section class="py-12">
+  <h2 class="text-3xl font-bold text-center mb-10 px-4">Experience</h2>
+  <div class="relative group/timeline">
+    <!-- Left/right hover scroll zones -->
+    <div id="scroll-left" class="absolute left-0 top-0 bottom-0 w-24 z-10 cursor-w-resize hidden md:flex items-center justify-start pl-2">
+      <div class="w-10 h-10 rounded-full dark:bg-surface-alt-dark/80 bg-surface-alt/80 backdrop-blur flex items-center justify-center opacity-0 group-hover/timeline:opacity-100 transition-opacity">
+        <svg class="w-5 h-5 dark:text-neutral-400 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      </div>
+    </div>
+    <div id="scroll-right" class="absolute right-0 top-0 bottom-0 w-24 z-10 cursor-e-resize hidden md:flex items-center justify-end pr-2">
+      <div class="w-10 h-10 rounded-full dark:bg-surface-alt-dark/80 bg-surface-alt/80 backdrop-blur flex items-center justify-center opacity-0 group-hover/timeline:opacity-100 transition-opacity">
+        <svg class="w-5 h-5 dark:text-neutral-400 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+    <!-- Fade edges -->
+    <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-16 z-[5] dark:bg-gradient-to-r dark:from-surface-dark dark:to-transparent bg-gradient-to-r from-surface to-transparent hidden md:block"></div>
+    <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-16 z-[5] dark:bg-gradient-to-l dark:from-surface-dark dark:to-transparent bg-gradient-to-l from-surface to-transparent hidden md:block"></div>
+
+    <!-- Scrollable track -->
+    <div id="exp-track" class="overflow-x-auto pb-4 scrollbar-hide">
+      <div class="flex items-start gap-0 px-8 min-w-max">
+        {{ range $i, $e := .Site.Data.experience }}
+        <div class="flex flex-col items-center w-52 shrink-0 group/card">
+          <!-- Card -->
+          <div class="dark:bg-surface-alt-dark bg-surface-alt rounded-xl px-4 py-4 w-44 text-center hover:dark:bg-neutral-800/80 hover:bg-neutral-100 transition-all duration-300 group-hover/card:scale-105 group-hover/card:shadow-lg group-hover/card:dark:shadow-emerald-500/5">
+            <span class="text-xs font-mono text-emerald-500 block mb-1">{{ $e.year }}</span>
+            <h3 class="font-semibold text-sm leading-tight mb-1">{{ $e.role }}</h3>
+            <p class="text-xs dark:text-text-muted-dark text-text-muted">{{ $e.company }}</p>
+          </div>
+          <!-- Connector -->
+          <div class="flex flex-col items-center mt-2">
+            <div class="w-px h-4 dark:bg-neutral-700 bg-neutral-300"></div>
+            <div class="w-3 h-3 rounded-full bg-emerald-500 ring-4 dark:ring-surface-dark ring-surface group-hover/card:ring-emerald-500/20 transition-all"></div>
+          </div>
+          <!-- Horizontal line segment -->
+          {{ if lt $i (sub (len $.Site.Data.experience) 1) }}
+          <div class="absolute" style="display:none"></div>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+      <!-- Continuous horizontal line behind dots -->
+      <div class="relative mx-8">
+        <div class="absolute left-0 right-0 dark:bg-neutral-800 bg-neutral-200" style="height: 2px; top: -13px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var track = document.getElementById('exp-track');
+  var leftZone = document.getElementById('scroll-left');
+  var rightZone = document.getElementById('scroll-right');
+  var scrollSpeed = 3;
+  var raf = null;
+
+  function autoScroll(dir) {
+    track.scrollLeft += dir * scrollSpeed;
+    raf = requestAnimationFrame(function() { autoScroll(dir); });
+  }
+
+  leftZone.addEventListener('mouseenter', function() { raf = requestAnimationFrame(function() { autoScroll(-1); }); });
+  leftZone.addEventListener('mouseleave', function() { cancelAnimationFrame(raf); });
+  rightZone.addEventListener('mouseenter', function() { raf = requestAnimationFrame(function() { autoScroll(1); }); });
+  rightZone.addEventListener('mouseleave', function() { cancelAnimationFrame(raf); });
+})();
+</script>

@@ -1,0 +1,14 @@
+{
+  "name": "gobinath.com",
+  "private": true,
+  "scripts": {
+    "dev": "hugo server",
+    "build": "hugo --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "postcss": "^8",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4"
+  }
+}

@@ -1,0 +1,72 @@
+education:
+  - degree: M.Sc Computer Science
+    institution: Hindusthan College of Arts and Science
+    years: "2001 – 2003"
+
+  - degree: B.Sc Computer Science
+    institution: Hindusthan College of Arts and Science
+    years: "1997 – 2001"
+
+  - degree: Grade 12
+    institution: RVS Matriculation Higher Secondary School
+    years: "1998"
+
+certifications:
+  - name: AWS Certified AI Practitioner
+    issuer: Amazon Web Services
+    year: "Jan 2026"
+    sortDate: "2026-01"
+    url: "https://www.credly.com/badges/4f172763-a79b-44af-9439-e30871aacbb5/public_url"
+
+  - name: AWS Certified Cloud Practitioner
+    issuer: Amazon Web Services
+    year: "Oct 2024"
+    sortDate: "2024-10"
+    url: "https://www.credly.com/badges/ab4d4959-37b1-41ac-86f0-4a4886abd9e4/public_url"
+
+  - name: LeanIX Certified Enterprise Architecture Management (EAM) Practitioner (Level 1)
+    issuer: SAP LeanIX
+    year: "Mar 2025"
+    sortDate: "2025-03"
+    url: "https://verify.skilljar.com/c/9v7tz4m9ydhc"
+
+  - name: Academy Accreditation - Generative AI Fundamentals
+    issuer: Databricks Academy
+    year: "Mar 2024"
+    sortDate: "2024-03"
+    url: "https://credentials.databricks.com/cd97d9cd-cf21-44ad-9907-c369ea4a7c4c#acc.nRIqpPrE"
+
+  - name: TCS ABLAZE 2.0 - Strategic Transformation Advisor Program
+    issuer: INSEAD
+    year: "Sep 2022"
+    sortDate: "2022-09"
+    url: ""
+
+  - name: Acquia Certified Site Builder - Drupal 7
+    issuer: Acquia
+    year: "May 2015"
+    sortDate: "2015-05"
+    url: ""
+
+  - name: Acquia Certified Front End Specialist - Drupal 7
+    issuer: Acquia
+    year: "Nov 2014"
+    sortDate: "2014-11"
+    url: "https://certification.acquia.com/person/community/gobinath-mallaiyan"
+
+  - name: Acquia Certified Developer
+    issuer: Acquia
+    year: "Oct 2014"
+    sortDate: "2014-10"
+    url: "https://certification.acquia.com/person/community/gobinath-mallaiyan"
+
+  - name: Certified ScrumMaster®
+    issuer: Scrum Alliance
+    year: "Dec 2009"
+    sortDate: "2009-12"
+    url: "https://certification.acquia.com/person/community/gobinath-mallaiyan"
+
+  - name: C/C++ Certification
+    issuer: NIIT
+    year: "Apr 2002"
+    sortDate: "2002-04"
