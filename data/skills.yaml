@@ -21,13 +21,13 @@
 - name: Azure
   weight: 3
 - name: Akamai
-  weight: 3
+  weight: 2
 - name: CI/CD
-  weight: 3
+  weight: 4
 - name: Linux
   weight: 3
 - name: Drupal
-  weight: 3
+  weight: 5
 - name: WordPress
   weight: 2
 - name: Hugo

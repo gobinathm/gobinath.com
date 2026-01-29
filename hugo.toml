@@ -18,12 +18,13 @@ enableRobotsTXT = false
   formspreeID = "xeegwavv"
 
   [params.social]
-    linkedin = "https://www.linkedin.com/in/gobinath/"
+    linkedin = "https://www.linkedin.com/in/gobinathm/"
     github = "https://github.com/gobinathm"
     instagram = "https://www.instagram.com/gobinathm/"
     medium = "https://medium.com/@gobinathm"
-    stackoverflow = "https://stackoverflow.com/users/1745498/gobinath"
+    stackoverflow = "https://stackoverflow.com/users/1288968/gobinath-mallaiyan"
+    twitter = "https://twitter.com/gobinathm"
     fivehundredpx = "https://500px.com/p/gobinathm"
-    strava = "https://www.strava.com/athletes/gobinathm"
+    strava = "https://www.strava.com/athletes/10286114"
     goodreads = "https://www.goodreads.com/user/show/12583429-gobinath-mallaiyan"
     storygraph = "https://app.thestorygraph.com/profile/gobinathm"
