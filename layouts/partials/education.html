@@ -1,33 +1,131 @@
-<section class="max-w-5xl mx-auto px-4 py-12">
-  <div class="grid md:grid-cols-2 gap-12">
-    <div>
-      <h2 class="text-3xl font-bold mb-8">Education</h2>
-      {{ range .Site.Data.education.education }}
-      <div class="mb-6 dark:bg-surface-alt-dark bg-surface-alt rounded-lg p-5">
-        <h3 class="font-semibold">{{ .degree }}</h3>
-        <p class="text-sm dark:text-text-muted-dark text-text-muted">{{ .institution }}</p>
-        <p class="text-sm font-mono text-emerald-500">{{ .years }}</p>
+<section id="education" class="relative py-16 md:py-20 overflow-hidden">
+  <div class="absolute inset-0 dark:bg-gradient-to-b dark:from-transparent dark:via-violet-950/5 dark:to-transparent bg-gradient-to-b from-transparent via-violet-50/20 to-transparent"></div>
+
+  <div class="relative max-w-5xl mx-auto px-6">
+
+    <!-- Education -->
+    <div class="mb-20">
+      <div class="mb-10">
+        <p class="reveal text-xs uppercase tracking-[0.3em] text-emerald-500 font-semibold mb-4">Background</p>
+        <h2 class="text-5xl md:text-6xl font-black tracking-tighter word-reveal">Education</h2>
+        <div class="mt-6 overflow-hidden"><div class="h-[2px] bg-gradient-to-r from-emerald-500 to-transparent hr-animate"></div></div>
       </div>
-      {{ end }}
-    </div>
-    <div>
-      <h2 class="text-3xl font-bold mb-8">Certifications</h2>
-      {{ range sort .Site.Data.education.certifications "sortDate" "desc" }}
-      <div class="mb-4 flex items-start gap-3">
-        <svg class="w-5 h-5 mt-0.5 shrink-0 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <div>
-          {{ if .url }}
-          <a href="{{ .url }}" target="_blank" rel="noopener" class="group/cert font-medium leading-snug inline-flex items-center gap-1 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
-            {{ .name }}
-            <svg class="w-3.5 h-3.5 opacity-0 group-hover/cert:opacity-100 transition-opacity shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-          {{ else }}
-          <p class="font-medium leading-snug">{{ .name }}</p>
-          {{ end }}
-          <p class="text-sm"><span class="dark:text-text-muted-dark text-text-muted">{{ .issuer }}</span>{{ with .year }} <span class="font-mono text-emerald-500">&middot; {{ . }}</span>{{ end }}</p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" data-stagger>
+        {{ range .Site.Data.education.education }}
+        <div class="glass glass-hover p-6 reveal">
+          <h3 class="font-bold text-lg mb-1">{{ .degree }}</h3>
+          <p class="text-sm dark:text-neutral-500 text-neutral-500">{{ .institution }}</p>
+          <p class="text-sm font-mono text-emerald-500 mt-2">{{ .years }}</p>
         </div>
+        {{ end }}
       </div>
-      {{ end }}
+    </div>
+
+    <!-- Certifications -->
+    <div>
+      <div class="mb-10">
+        <p class="reveal text-xs uppercase tracking-[0.3em] text-emerald-500 font-semibold mb-4">Credentials</p>
+        <h2 class="text-5xl md:text-6xl font-black tracking-tighter word-reveal">Certifications</h2>
+        <div class="mt-6 overflow-hidden"><div class="h-[2px] bg-gradient-to-r from-emerald-500 to-transparent hr-animate"></div></div>
+      </div>
+
+      <!-- Group filter cloud -->
+      <div class="reveal mb-10 flex flex-wrap gap-2" id="cert-filters">
+        <button data-filter="all" class="cert-filter-btn active px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 dark:bg-emerald-500/15 bg-emerald-50 text-emerald-500 border border-emerald-500/30">
+          All
+        </button>
+        {{/* Collect unique groups */}}
+        {{ $groups := slice }}
+        {{ range .Site.Data.education.certifications }}
+          {{ if not (in $groups .group) }}
+            {{ $groups = $groups | append .group }}
+          {{ end }}
+        {{ end }}
+        {{ range $groups }}
+        <button data-filter="{{ . }}" class="cert-filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 dark:bg-white/5 bg-black/5 dark:text-neutral-400 text-neutral-500 border border-transparent hover:border-emerald-500/30 hover:text-emerald-500">
+          {{ . }}
+          <span class="ml-1 text-xs dark:text-neutral-600 text-neutral-400">
+            {{- $g := . -}}
+            {{- $count := 0 -}}
+            {{- range $.Site.Data.education.certifications -}}
+              {{- if eq .group $g -}}{{ $count = add $count 1 }}{{- end -}}
+            {{- end -}}
+            {{ $count }}
+          </span>
+        </button>
+        {{ end }}
+      </div>
+
+      <!-- Cert cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="cert-cards" data-stagger>
+        {{ range sort .Site.Data.education.certifications "sortDate" "desc" }}
+        <div class="cert-card glass glass-hover p-5 reveal-scale" data-group="{{ .group }}">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg dark:bg-emerald-500/10 bg-emerald-50 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div class="min-w-0">
+              {{ if .url }}
+              <a href="{{ .url }}" target="_blank" rel="noopener" class="group/cert font-semibold text-sm leading-snug inline-flex items-center gap-1.5 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
+                <span>{{ .name }}</span>
+                <svg class="w-3 h-3 opacity-0 group-hover/cert:opacity-100 -translate-y-0.5 group-hover/cert:translate-y-0 transition-all shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+              {{ else }}
+              <p class="font-semibold text-sm leading-snug">{{ .name }}</p>
+              {{ end }}
+              <p class="text-xs dark:text-neutral-600 text-neutral-400 mt-1">
+                {{ .issuer }}{{ with .year }} &middot; <span class="font-mono text-emerald-500">{{ . }}</span>{{ end }}
+              </p>
+              <span class="inline-block mt-2 text-[10px] uppercase tracking-widest dark:text-neutral-600 text-neutral-400 px-2 py-0.5 rounded-full dark:bg-white/5 bg-black/5">{{ .group }}</span>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  var filters = document.querySelectorAll('.cert-filter-btn');
+  var cards = document.querySelectorAll('.cert-card');
+
+  filters.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var filter = btn.dataset.filter;
+
+      // Update active button
+      filters.forEach(function(b) {
+        b.classList.remove('active', 'dark:bg-emerald-500/15', 'bg-emerald-50', 'text-emerald-500', 'border-emerald-500/30');
+        b.classList.add('dark:bg-white/5', 'bg-black/5', 'dark:text-neutral-400', 'text-neutral-500', 'border-transparent');
+      });
+      btn.classList.remove('dark:bg-white/5', 'bg-black/5', 'dark:text-neutral-400', 'text-neutral-500', 'border-transparent');
+      btn.classList.add('active', 'dark:bg-emerald-500/15', 'bg-emerald-50', 'text-emerald-500', 'border-emerald-500/30');
+
+      // Filter cards with animation
+      cards.forEach(function(card) {
+        var group = card.dataset.group;
+        if (filter === 'all' || group === filter) {
+          card.style.display = '';
+          // Re-trigger animation
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.9)';
+          requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+              card.style.transition = 'opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1)';
+              card.style.opacity = '1';
+              card.style.transform = 'scale(1)';
+            });
+          });
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.9)';
+          setTimeout(function() { card.style.display = 'none'; }, 300);
+        }
+      });
+    });
+  });
+})();
+</script>

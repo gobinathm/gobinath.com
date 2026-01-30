@@ -1,29 +1,36 @@
-<section class="max-w-5xl mx-auto px-4 py-12">
-  <h2 class="text-3xl font-bold text-center mb-10">Skills</h2>
-  <div class="relative overflow-hidden rounded-2xl dark:bg-surface-alt-dark bg-surface-alt p-10">
-    <!-- Decorative gradient orbs -->
-    <div class="absolute -top-20 -left-20 w-60 h-60 bg-emerald-500/10 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-20 -right-20 w-60 h-60 bg-emerald-500/5 rounded-full blur-3xl"></div>
+<section id="skills" class="relative py-16 md:py-20 overflow-hidden">
+  <div class="absolute inset-0 dark:bg-gradient-to-b dark:from-transparent dark:via-blue-950/5 dark:to-transparent bg-gradient-to-b from-transparent via-blue-50/20 to-transparent"></div>
 
-    <div class="relative flex flex-wrap items-center justify-center gap-3">
-      {{ range .Site.Data.skills }}
-        {{ $w := .weight }}
-        {{ $sizeClass := "text-xs px-3 py-1.5" }}
-        {{ $opacity := "opacity-60" }}
-        {{ if eq $w 5 }}
-          {{ $sizeClass = "text-xl font-bold px-5 py-2.5" }}
-          {{ $opacity = "opacity-100" }}
-        {{ else if eq $w 4 }}
-          {{ $sizeClass = "text-base font-semibold px-4 py-2" }}
-          {{ $opacity = "opacity-90" }}
-        {{ else if eq $w 3 }}
-          {{ $sizeClass = "text-sm font-medium px-4 py-1.5" }}
-          {{ $opacity = "opacity-80" }}
-        {{ else if eq $w 2 }}
-          {{ $sizeClass = "text-xs font-medium px-3 py-1.5" }}
-          {{ $opacity = "opacity-70" }}
-        {{ end }}
-        <span class="skill-cloud-tag {{ $sizeClass }} {{ $opacity }}">{{ .name }}</span>
+  <div class="relative max-w-5xl mx-auto px-6">
+    <!-- Section header -->
+    <div class="mb-12">
+      <p class="reveal text-xs uppercase tracking-[0.3em] text-emerald-500 font-semibold mb-4">Expertise</p>
+      <h2 class="text-5xl md:text-7xl font-black tracking-tighter word-reveal">Technologies I work with</h2>
+      <div class="mt-6 overflow-hidden"><div class="h-[2px] bg-gradient-to-r from-emerald-500 to-transparent hr-animate"></div></div>
+    </div>
+
+    <!-- Skill categories -->
+    <div class="space-y-10">
+      {{ range $ci, $cat := .Site.Data.skills.categories }}
+      <div class="reveal">
+        <h3 class="text-sm font-bold uppercase tracking-[0.2em] dark:text-neutral-400 text-neutral-500 mb-8 flex items-center gap-3">
+          <span class="w-8 h-[1px] bg-emerald-500"></span>
+          {{ .name }}
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-stagger>
+          {{ range .skills }}
+          <div class="glass glass-hover p-5 reveal-scale">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-semibold text-sm">{{ .name }}</span>
+              <span class="text-xs font-mono dark:text-emerald-400 text-emerald-600">{{ .level }}%</span>
+            </div>
+            <div class="skill-bar-track dark:bg-neutral-800/50 bg-neutral-200/80">
+              <div class="skill-bar-fill" data-level="{{ .level }}"></div>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
       {{ end }}
     </div>
   </div>

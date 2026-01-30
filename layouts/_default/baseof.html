@@ -3,13 +3,224 @@
 <head>
   {{- partial "head.html" . -}}
 </head>
-<body class="dark:bg-surface-dark dark:text-text-dark bg-surface text-text transition-colors duration-300 min-h-screen">
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-emerald-500 text-white px-4 py-2 rounded">Skip to main content</a>
+<body class="dark:bg-surface-dark dark:text-text-dark bg-surface text-text min-h-screen antialiased overflow-x-hidden">
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" class="scroll-progress" style="width: 0%;"></div>
+
+  <!-- Cursor glow (desktop only) -->
+  <div id="cursor-glow" class="cursor-glow hidden md:block" style="opacity:0;"></div>
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-emerald-500 text-white px-4 py-2 rounded z-[100]">Skip to main content</a>
   {{- partial "nav.html" . -}}
   <main id="main-content" role="main">
     {{- block "main" . }}{{ end -}}
   </main>
   {{- partial "footer.html" . -}}
-  {{- partial "theme-toggle.html" . -}}
+
+  <script>
+  (function() {
+    var html = document.documentElement;
+
+    // ── Theme toggle ──
+    var btn = document.getElementById('theme-toggle-btn');
+    btn && btn.addEventListener('click', function() {
+      var isDark = html.classList.contains('dark');
+      html.classList.toggle('dark', !isDark);
+      html.classList.toggle('light', isDark);
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+
+    // ── Mobile menu ──
+    var menuBtn = document.getElementById('mobile-menu-btn');
+    var menuClose = document.getElementById('mobile-menu-close');
+    var mobileMenu = document.getElementById('mobile-menu');
+    function openMenu() { mobileMenu && mobileMenu.classList.remove('translate-x-full'); mobileMenu && mobileMenu.classList.add('translate-x-0'); }
+    function closeMenu() { mobileMenu && mobileMenu.classList.remove('translate-x-0'); mobileMenu && mobileMenu.classList.add('translate-x-full'); }
+    menuBtn && menuBtn.addEventListener('click', openMenu);
+    menuClose && menuClose.addEventListener('click', closeMenu);
+    mobileMenu && mobileMenu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', closeMenu);
+    });
+
+    // ── Scroll progress bar ──
+    var progressBar = document.getElementById('scroll-progress');
+    function updateProgress() {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    }
+
+    // ── Nav shrink + active section tracking ──
+    var navInner = document.getElementById('nav-inner');
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('.nav-link');
+    function updateNav() {
+      var y = window.scrollY;
+      if (y > 80) {
+        navInner && navInner.classList.add('nav-scrolled');
+      } else {
+        navInner && navInner.classList.remove('nav-scrolled');
+      }
+      // Active section
+      var current = '';
+      sections.forEach(function(section) {
+        var top = section.offsetTop - 200;
+        if (y >= top) current = section.getAttribute('id');
+      });
+      navLinks.forEach(function(link) {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+
+    // ── Scroll reveal (multiple types) ──
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .word-reveal, .hr-animate').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+
+    // ── Word reveal: wrap words in spans ──
+    document.querySelectorAll('.word-reveal').forEach(function(el) {
+      var text = el.textContent.trim();
+      var words = text.split(/\s+/);
+      el.innerHTML = '';
+      words.forEach(function(word, i) {
+        var span = document.createElement('span');
+        span.className = 'word';
+        span.style.transitionDelay = (i * 60) + 'ms';
+        span.textContent = word;
+        el.appendChild(span);
+      });
+    });
+
+    // ── Stagger reveal children ──
+    document.querySelectorAll('[data-stagger]').forEach(function(container) {
+      var children = container.querySelectorAll('.reveal, .reveal-scale');
+      children.forEach(function(child, i) {
+        child.style.transitionDelay = (i * 100) + 'ms';
+      });
+    });
+
+    // ── Skill bar animation ──
+    var skillObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var bar = entry.target;
+          bar.style.width = bar.dataset.level + '%';
+          bar.classList.add('animated');
+          skillObserver.unobserve(bar);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.skill-bar-fill').forEach(function(el) {
+      skillObserver.observe(el);
+    });
+
+    // ── Count-up animation for stats ──
+    var statObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var target = parseInt(el.dataset.count, 10);
+          var suffix = el.dataset.suffix || '';
+          var duration = 2000;
+          var start = 0;
+          var startTime = null;
+          function animate(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.floor(eased * target) + suffix;
+            if (progress < 1) requestAnimationFrame(animate);
+          }
+          requestAnimationFrame(animate);
+          statObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(function(el) {
+      statObserver.observe(el);
+    });
+
+    // ── Timeline scroll fill ──
+    var timelineTrackFill = document.getElementById('timeline-fill');
+    var timelineContainer = document.getElementById('timeline-container');
+    var timelineNodes = document.querySelectorAll('.timeline-node');
+    function updateTimeline() {
+      if (!timelineContainer || !timelineTrackFill) return;
+      var rect = timelineContainer.getBoundingClientRect();
+      var containerTop = rect.top;
+      var containerHeight = rect.height;
+      var viewportMiddle = window.innerHeight * 0.5;
+      var fillPercent = Math.max(0, Math.min(100, ((viewportMiddle - containerTop) / containerHeight) * 100));
+      timelineTrackFill.style.height = fillPercent + '%';
+      // Activate nodes as timeline passes them
+      timelineNodes.forEach(function(node) {
+        var nodeRect = node.getBoundingClientRect();
+        if (nodeRect.top < viewportMiddle) {
+          node.classList.add('active');
+        } else {
+          node.classList.remove('active');
+        }
+      });
+    }
+
+    // ── Cursor glow ──
+    var cursorGlow = document.getElementById('cursor-glow');
+    var mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
+    document.addEventListener('mousemove', function(e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (cursorGlow) cursorGlow.style.opacity = '1';
+    });
+    function animateGlow() {
+      glowX += (mouseX - glowX) * 0.08;
+      glowY += (mouseY - glowY) * 0.08;
+      if (cursorGlow) {
+        cursorGlow.style.left = glowX + 'px';
+        cursorGlow.style.top = glowY + 'px';
+      }
+      requestAnimationFrame(animateGlow);
+    }
+    if (window.innerWidth >= 768) animateGlow();
+
+    // ── Parallax (desktop + no reduced motion) ──
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var parallaxEls = document.querySelectorAll('[data-parallax]');
+
+    // ── Unified scroll handler ──
+    var scrollTicking = false;
+    window.addEventListener('scroll', function() {
+      if (!scrollTicking) {
+        requestAnimationFrame(function() {
+          updateProgress();
+          updateNav();
+          updateTimeline();
+          // Parallax
+          if (!prefersReduced && window.innerWidth >= 768) {
+            var y = window.scrollY;
+            parallaxEls.forEach(function(el) {
+              var speed = parseFloat(el.dataset.parallax);
+              el.style.transform = 'translateY(' + (y * speed) + 'px)';
+            });
+          }
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    }, { passive: true });
+
+    // Initial calls
+    updateProgress();
+    updateNav();
+  })();
+  </script>
 </body>
 </html>

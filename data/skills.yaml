@@ -1,54 +1,66 @@
-- name: Program Management
-  weight: 5
-- name: AI/ML
-  weight: 5
-- name: AWS
-  weight: 5
-- name: Cloud Architecture
-  weight: 4
-- name: Generative AI
-  weight: 4
-- name: DevOps
-  weight: 4
-- name: Docker
-  weight: 3
-- name: IT Project Management
-  weight: 4
-- name: Agile & Scrum
-  weight: 3
-- name: Large Language Models
-  weight: 3
-- name: Azure
-  weight: 3
-- name: Akamai
-  weight: 2
-- name: CI/CD
-  weight: 4
-- name: Linux
-  weight: 3
-- name: Drupal
-  weight: 5
-- name: WordPress
-  weight: 2
-- name: Hugo
-  weight: 2
-- name: JAMStack
-  weight: 2
-- name: GraphQL
-  weight: 2
-- name: PHP
-  weight: 2
-- name: Perl
-  weight: 1
-- name: Rust
-  weight: 2
-- name: Web Security
-  weight: 3
-- name: Enterprise Architecture
-  weight: 4
-- name: Solutions Architecture
-  weight: 4
-- name: Stakeholder Management
-  weight: 3
-- name: Vendor Management
-  weight: 2
+categories:
+  - name: "Leadership & Strategy"
+    skills:
+      - name: Program Management
+        level: 95
+      - name: IT Project Management
+        level: 85
+      - name: Stakeholder Management
+        level: 80
+      - name: Vendor Management
+        level: 70
+      - name: Enterprise Architecture
+        level: 85
+      - name: Solutions Architecture
+        level: 85
+      - name: Agile & Scrum
+        level: 80
+
+  - name: "Cloud & DevOps"
+    skills:
+      - name: AWS
+        level: 90
+      - name: Azure
+        level: 75
+      - name: Akamai
+        level: 65
+      - name: Cloud Architecture
+        level: 85
+      - name: Docker
+        level: 75
+      - name: DevOps
+        level: 85
+      - name: CI/CD
+        level: 85
+      - name: Linux
+        level: 75
+
+  - name: "AI & Machine Learning"
+    skills:
+      - name: AI/ML
+        level: 90
+      - name: Generative AI
+        level: 85
+      - name: Large Language Models
+        level: 80
+
+  - name: "Web & Development"
+    skills:
+      - name: Drupal
+        level: 95
+      - name: WordPress
+        level: 65
+      - name: Hugo
+        level: 65
+      - name: JAMStack
+        level: 65
+      - name: GraphQL
+        level: 65
+      - name: PHP
+        level: 65
+      - name: Perl
+        level: 50
+      - name: Rust
+        level: 60
+      - name: Web Security
+        level: 75
