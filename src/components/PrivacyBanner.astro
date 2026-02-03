@@ -1,0 +1,38 @@
+---
+---
+<div id="privacy-banner" class="fixed bottom-4 right-4 z-50 max-w-sm w-[calc(100%-2rem)] hidden translate-y-10 opacity-0 transition-all duration-500">
+  <div class="glass-card p-4 flex items-center gap-4 bg-surface-card/90 backdrop-blur-md border border-white/10 shadow-xl rounded-xl">
+    <div class="text-xs text-text-secondary flex-1">
+      This site uses privacy-focused, anonymous analytics to improve your experience.
+    </div>
+    <button id="dismiss-privacy" class="px-3 py-1.5 text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 rounded-lg transition-colors whitespace-nowrap cursor-pointer">
+      Got it
+    </button>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('privacy-banner');
+  const dismissBtn = document.getElementById('dismiss-privacy');
+  
+  // Check if previously dismissed
+  if (banner && !localStorage.getItem('privacy-banner-dismissed')) {
+    // Show after a small delay
+    setTimeout(() => {
+      banner.classList.remove('hidden');
+      // Trigger reflow to enable transition
+      void banner.offsetWidth;
+      banner.classList.remove('translate-y-10', 'opacity-0');
+    }, 1500);
+  }
+
+  dismissBtn?.addEventListener('click', () => {
+    if (banner) {
+      banner.classList.add('translate-y-10', 'opacity-0');
+      setTimeout(() => {
+        banner.classList.add('hidden');
+      }, 500);
+      localStorage.setItem('privacy-banner-dismissed', 'true');
+    }
+  });
+</script>

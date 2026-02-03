@@ -1,5 +1,6 @@
 ---
 import { site } from '@/data/site';
+import PrivacyBanner from '@/components/PrivacyBanner.astro';
 import '@/styles/global.css';
 
 interface Props {
@@ -56,7 +57,11 @@ const { title = site.name, description = site.description } = Astro.props;
       description: site.description,
       image: `${site.url}${site.image}`,
       sameAs: Object.values(site.social),
+      sameAs: Object.values(site.social),
     })} />
+
+    <!-- Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="b1a9dac1-6b2f-4a7f-9ebe-279bf54a0b79"></script>
 
     <!-- Theme init (prevent flash) -->
     <script is:inline>
@@ -67,6 +72,7 @@ const { title = site.name, description = site.description } = Astro.props;
     </script>
   </head>
   <body class="bg-surface min-h-screen">
+    <PrivacyBanner />
     <!-- Floating theme toggle -->
     <button id="theme-toggle" class="fixed top-4 right-4 z-50 w-10 h-10 rounded-full glass-card flex items-center justify-center text-text-muted hover:text-accent transition-all hover:scale-110" aria-label="Toggle theme">
       <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
