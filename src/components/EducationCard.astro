@@ -1,0 +1,16 @@
+---
+import { education } from '@/data/education';
+---
+
+<div class="glass-card p-6 md:p-8 col-span-full">
+  <h3 class="text-text-muted text-xs font-semibold uppercase tracking-wider mb-6">Education</h3>
+  <div class="grid md:grid-cols-3 gap-4">
+    {education.map(edu => (
+      <div class="p-5 rounded-2xl bg-surface-card border border-border-glass hover:border-accent/30 transition-all group">
+        <div class="text-text-primary text-sm font-semibold group-hover:text-accent transition-colors">{edu.degree}</div>
+        <div class="text-text-muted text-xs mt-2">{edu.institution}</div>
+        <div class="text-accent/70 text-xs font-mono mt-1">{edu.years}</div>
+      </div>
+    ))}
+  </div>
+</div>

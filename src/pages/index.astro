@@ -1,0 +1,46 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroCard from '@/components/HeroCard.astro';
+import SocialCard from '@/components/SocialCard.astro';
+import StatsCard from '@/components/StatsCard.astro';
+import AboutCard from '@/components/AboutCard.astro';
+import ExperienceSection from '@/components/ExperienceSection.astro';
+import SkillsSection from '@/components/SkillsSection.astro';
+import CertCard from '@/components/CertCard.astro';
+import EducationCard from '@/components/EducationCard.astro';
+import ContactCard from '@/components/ContactCard.astro';
+---
+
+<Layout>
+  <main class="max-w-6xl mx-auto px-4 py-8 md:py-16">
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <!-- Row 1: Hero (2x2) + Social + Stats -->
+      <HeroCard />
+      <SocialCard />
+      <StatsCard />
+
+      <!-- Row 2 (fills beside hero): About (2x1) -->
+      <AboutCard />
+
+      <!-- Row 3: Education + Certifications (full width each) -->
+      <EducationCard />
+      <CertCard />
+
+      <!-- Row 4: Experience (full width) -->
+      <ExperienceSection />
+
+      <!-- Row 5: Skills (4 cards) -->
+      <SkillsSection />
+
+      <!-- Row 6: Contact (full width) -->
+      <ContactCard />
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-text-muted text-xs mt-12 pb-8">
+      <p>☕ Brew by <span class="gradient-text font-semibold">Gobinath Mallaiyan</span> · powered by <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">Astro</a>, <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">Tailwind</a> &amp; <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">GitHub Pages</a></p>
+    </footer>
+  </main>
+</Layout>

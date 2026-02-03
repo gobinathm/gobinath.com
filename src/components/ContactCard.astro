@@ -1,0 +1,23 @@
+---
+import { site } from '@/data/site';
+---
+
+<div class="glass-card p-6 md:p-8 col-span-full flex flex-col gap-6 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-accent/5 via-transparent to-purple-500/5 pointer-events-none"></div>
+  <div class="relative z-10">
+    <h3 class="text-text-muted text-xs font-semibold uppercase tracking-wider mb-1">Get in Touch</h3>
+    <p class="text-text-secondary text-sm">Want to collaborate or chat about tech? Let's talk.</p>
+  </div>
+  <form action={`https://formspree.io/f/${site.formspreeID}`} method="POST" class="relative z-10 grid gap-4 md:grid-cols-2">
+    <input type="text" name="name" placeholder="Your Name" required
+      class="px-4 py-3 rounded-xl bg-surface-card border border-border-glass text-text-primary placeholder:text-text-muted text-sm focus:outline-none focus:border-accent/50 transition-colors" />
+    <input type="email" name="email" placeholder="Your Email" required
+      class="px-4 py-3 rounded-xl bg-surface-card border border-border-glass text-text-primary placeholder:text-text-muted text-sm focus:outline-none focus:border-accent/50 transition-colors" />
+    <textarea name="message" placeholder="Your Message" rows="4" required
+      class="px-4 py-3 rounded-xl bg-surface-card border border-border-glass text-text-primary placeholder:text-text-muted text-sm focus:outline-none focus:border-accent/50 transition-colors md:col-span-2 resize-none"></textarea>
+    <button type="submit"
+      class="px-6 py-3 rounded-xl bg-accent text-white font-medium text-sm hover:bg-accent-light transition-all md:col-span-2 md:justify-self-start">
+      Send Message
+    </button>
+  </form>
+</div>

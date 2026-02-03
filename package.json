@@ -1,14 +1,17 @@
 {
   "name": "gobinath.com",
+  "type": "module",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "hugo server",
-    "build": "hugo --minify"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "postcss": "^8",
-    "postcss-cli": "^11.0.1",
-    "tailwindcss": "^4"
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.8",
+    "astro": "^5.17.1",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^4.1.8"
   }
 }

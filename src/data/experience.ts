@@ -1,0 +1,23 @@
+export interface Experience {
+  year: string;
+  role: string;
+  company: string;
+  description: string;
+}
+
+export const experience: Experience[] = [
+  { year: '2021', role: 'Technical Program Manager', company: 'Tata Consultancy Services', description: 'Leading cross-functional programs in AI/ML and cloud transformation initiatives.' },
+  { year: '2016', role: 'Program Manager', company: 'Tata Consultancy Services', description: 'Managed large-scale digital transformation programs for enterprise clients.' },
+  { year: '2014', role: 'Program Manager', company: 'Tata Consultancy Services', description: 'Oversaw multi-stream program delivery and stakeholder management.' },
+  { year: '2013', role: 'Project Manager (EA)', company: 'Tata Consultancy Services', description: 'Led enterprise architecture projects and technology roadmap planning.' },
+  { year: '2013', role: 'Solutions Architect', company: 'Tata Consultancy Services', description: 'Designed scalable solutions for web platforms and content management systems.' },
+  { year: '2011', role: 'Vendor Architect', company: 'Tata Consultancy Services', description: 'Managed vendor technology integrations and architectural governance.' },
+  { year: '2008', role: 'Technical Lead', company: 'Tata Consultancy Services', description: 'Led development teams in building enterprise web applications.' },
+  { year: '2007', role: 'Module Lead', company: 'Tata Consultancy Services', description: 'Coordinated module-level development and code reviews.' },
+  { year: '2006', role: 'Software Engineer', company: 'Tata Consultancy Services', description: 'Developed and maintained web-based enterprise applications.' },
+  { year: '2005', role: 'Technical Specialist', company: 'Microland Limited', description: 'Provided technical support and infrastructure management.' },
+  { year: '2004', role: 'Internet Programmer', company: 'Maintec Technologies', description: 'Built web applications and internet-based solutions.' },
+  { year: '2004', role: 'Testing Engineer', company: 'Maintec Technologies', description: 'Performed software testing and quality assurance.' },
+  { year: '2003', role: 'Intern', company: 'Singapore Infoquest', description: 'Software development internship focused on web technologies.' },
+  { year: '2001', role: 'Programmer / Trainer', company: 'Career Softech', description: 'Developed software and trained students in programming.' },
+];

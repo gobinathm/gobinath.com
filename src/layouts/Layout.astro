@@ -1,0 +1,138 @@
+---
+import { site } from '@/data/site';
+import '@/styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = site.name, description = site.description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Technical Program Manager, TPM, AI, ML, Cloud Architecture, Digital Transformation, Engineering Leadership, Toronto" />
+    <meta name="author" content={site.name} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={site.url} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={site.url} />
+    <meta property="og:image" content={`${site.url}${site.image}`} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: site.name,
+      url: site.url,
+      jobTitle: site.title,
+      description: site.description,
+      image: `${site.url}${site.image}`,
+      sameAs: Object.values(site.social),
+    })} />
+
+    <!-- Theme init (prevent flash) -->
+    <script is:inline>
+      const t = localStorage.getItem('theme');
+      if (t === 'light' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.classList.replace('dark', 'light');
+      }
+    </script>
+  </head>
+  <body class="bg-surface min-h-screen">
+    <!-- Floating theme toggle -->
+    <button id="theme-toggle" class="fixed top-4 right-4 z-50 w-10 h-10 rounded-full glass-card flex items-center justify-center text-text-muted hover:text-accent transition-all hover:scale-110" aria-label="Toggle theme">
+      <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+      <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+    </button>
+
+    <slot />
+
+    <script>
+      // Theme toggle
+      const toggleBtn = document.getElementById('theme-toggle')!;
+      const sunIcon = document.getElementById('sun-icon')!;
+      const moonIcon = document.getElementById('moon-icon')!;
+
+      function updateThemeIcons() {
+        const isLight = document.documentElement.classList.contains('light');
+        sunIcon.classList.toggle('hidden', !isLight);
+        moonIcon.classList.toggle('hidden', isLight);
+      }
+      updateThemeIcons();
+
+      toggleBtn.addEventListener('click', () => {
+        const isLight = document.documentElement.classList.contains('light');
+        document.documentElement.classList.toggle('light', !isLight);
+        document.documentElement.classList.toggle('dark', isLight);
+        localStorage.setItem('theme', isLight ? 'dark' : 'light');
+        updateThemeIcons();
+      });
+
+      // Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+      // Counter animation
+      document.querySelectorAll('[data-count]').forEach((el) => {
+        const target = parseInt(el.getAttribute('data-count') || '0');
+        const io = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              let current = 0;
+              const step = Math.ceil(target / 40);
+              const interval = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                  current = target;
+                  clearInterval(interval);
+                }
+                (el as HTMLElement).textContent = current + '+';
+              }, 40);
+              io.unobserve(el);
+            }
+          },
+          { threshold: 0.5 }
+        );
+        io.observe(el);
+      });
+    </script>
+  </body>
+</html>

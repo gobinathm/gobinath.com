@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '@/data/site';
+import profilePhoto from '@/assets/gobi.png';
+---
+
+<div class="glass-card p-8 md:p-10 col-span-full lg:col-span-2 row-span-2 flex flex-col items-center justify-center text-center gap-6 relative overflow-hidden">
+  <!-- Subtle gradient bg -->
+  <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-purple-500/5 pointer-events-none"></div>
+
+  <div class="relative">
+    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-2 ring-accent/30 animate-pulse-ring">
+      <Image src={profilePhoto} alt={`Profile photo of ${site.name}`} width={160} height={160} class="w-full h-full object-cover" loading="eager" />
+    </div>
+  </div>
+
+  <div class="relative z-10">
+    <h1 class="text-3xl md:text-4xl font-bold gradient-text">{site.name}</h1>
+    <p class="text-text-secondary mt-2 text-lg">{site.title}</p>
+    <p class="text-text-muted text-sm mt-1">{site.tagline}</p>
+  </div>
+
+  <div class="flex items-center gap-2 text-text-muted text-sm relative z-10">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+    {site.location}
+  </div>
+
+  <img src="/img/Sign.png" alt="Signature" class="absolute bottom-4 right-4 h-12 w-auto opacity-30 -rotate-12 dark:invert pointer-events-none" />
+</div>

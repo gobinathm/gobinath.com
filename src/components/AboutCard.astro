@@ -1,0 +1,18 @@
+---
+import { site } from '@/data/site';
+---
+
+<div class="glass-card p-6 md:p-8 col-span-full lg:col-span-2 flex flex-col gap-4">
+  <h3 class="text-text-muted text-xs font-semibold uppercase tracking-wider">About</h3>
+  <p class="text-text-secondary leading-relaxed">{site.description}</p>
+  <div class="flex gap-3 mt-auto">
+    <a href={site.externalLinks.blog} target="_blank" rel="noopener noreferrer"
+      class="px-4 py-2 text-sm rounded-xl bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-all">
+      Blog
+    </a>
+    <a href={site.externalLinks.notes} target="_blank" rel="noopener noreferrer"
+      class="px-4 py-2 text-sm rounded-xl bg-surface-card text-text-secondary border border-border-glass hover:border-border-glass-hover transition-all">
+      Notes
+    </a>
+  </div>
+</div>

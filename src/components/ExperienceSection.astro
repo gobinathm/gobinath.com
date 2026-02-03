@@ -1,0 +1,57 @@
+---
+import { experience } from '@/data/experience';
+---
+
+<div class="glass-card p-6 md:p-8 col-span-full overflow-hidden">
+  <div class="flex items-center justify-between mb-6">
+    <h3 class="text-text-muted text-xs font-semibold uppercase tracking-wider">Experience</h3>
+    <div class="flex gap-2">
+      <button id="exp-left" class="w-8 h-8 rounded-lg bg-surface-card border border-border-glass flex items-center justify-center text-text-muted hover:text-accent hover:border-accent/30 transition-all disabled:opacity-30" disabled>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button id="exp-right" class="w-8 h-8 rounded-lg bg-surface-card border border-border-glass flex items-center justify-center text-text-muted hover:text-accent hover:border-accent/30 transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="relative">
+    <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-surface-card to-transparent z-10 pointer-events-none opacity-0 transition-opacity" id="exp-fade-left"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-surface-card to-transparent z-10 pointer-events-none" id="exp-fade-right"></div>
+    <div class="flex gap-4 overflow-x-auto pb-2 scroll-smooth" id="exp-scroll" style="scrollbar-width: none; -ms-overflow-style: none;">
+      {experience.map((exp) => (
+        <div class="flex-shrink-0 w-56 p-5 rounded-2xl bg-surface-card border border-border-glass hover:border-accent/30 hover:bg-surface-card-hover transition-all duration-300 group">
+          <div class="text-accent font-mono text-sm font-semibold mb-2">{exp.year}</div>
+          <div class="text-text-primary font-semibold text-sm mb-1 group-hover:text-accent transition-colors">{exp.role}</div>
+          <div class="text-text-muted text-xs mb-3">{exp.company}</div>
+          <p class="text-text-secondary text-xs leading-relaxed">{exp.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  const scroll = document.getElementById('exp-scroll')!;
+  const leftBtn = document.getElementById('exp-left')!;
+  const rightBtn = document.getElementById('exp-right')!;
+  const fadeLeft = document.getElementById('exp-fade-left')!;
+  const fadeRight = document.getElementById('exp-fade-right')!;
+
+  function updateButtons() {
+    const atStart = scroll.scrollLeft <= 10;
+    const atEnd = scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 10;
+    (leftBtn as HTMLButtonElement).disabled = atStart;
+    (rightBtn as HTMLButtonElement).disabled = atEnd;
+    fadeLeft.style.opacity = atStart ? '0' : '1';
+    fadeRight.style.opacity = atEnd ? '0' : '1';
+  }
+
+  leftBtn.addEventListener('click', () => { scroll.scrollBy({ left: -280, behavior: 'smooth' }); });
+  rightBtn.addEventListener('click', () => { scroll.scrollBy({ left: 280, behavior: 'smooth' }); });
+  scroll.addEventListener('scroll', updateButtons, { passive: true });
+  updateButtons();
+</script>
+
+<style>
+  #exp-scroll::-webkit-scrollbar { display: none; }
+</style>
