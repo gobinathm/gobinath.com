@@ -14,6 +14,8 @@
   --color-accent-dim: rgba(16, 185, 129, 0.15);
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-cursive: 'Dancing Script', cursive;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-ring: pulse-ring 3s ease-in-out infinite;
