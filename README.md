@@ -31,7 +31,7 @@ Want to create your own version? Follow these steps:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/gobinathm/your-portfolio.git
+git clone https://github.com/gobinathm/gobinath.com.git
 cd your-portfolio
 ```
 
