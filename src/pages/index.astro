@@ -9,6 +9,14 @@ import SkillsSection from '@/components/SkillsSection.astro';
 import CertCard from '@/components/CertCard.astro';
 import EducationCard from '@/components/EducationCard.astro';
 import ContactCard from '@/components/ContactCard.astro';
+import pkg from '../../package.json';
+
+const buildDate = new Date().toLocaleDateString('en-US', { 
+  year: 'numeric', 
+  month: 'short', 
+  day: 'numeric' 
+});
+const siteVersion = pkg.version;
 ---
 
 <Layout>
@@ -41,6 +49,9 @@ import ContactCard from '@/components/ContactCard.astro';
     <!-- Footer -->
     <footer class="text-center text-text-muted text-xs mt-12 pb-8">
       <p>☕ Brew by <span class="gradient-text font-semibold">Gobinath Mallaiyan</span> · powered by <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">Astro</a>, <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">Tailwind</a> &amp; <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">GitHub Pages</a></p>
+      <p class="mt-2 opacity-50 font-mono text-[10px]">
+        v{siteVersion} · Build: {buildDate}
+      </p>
     </footer>
   </main>
 </Layout>
