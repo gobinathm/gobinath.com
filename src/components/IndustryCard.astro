@@ -1,0 +1,34 @@
+---
+import { site } from '@/data/site';
+---
+
+<div class="glass-card p-6 md:p-8 col-span-full flex flex-col gap-5">
+  <h3 class="text-text-muted text-xs font-semibold uppercase tracking-wider">Industry Expertise</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {site.industries.map((industry) => (
+      <div class="flex flex-col gap-3 p-4 rounded-xl bg-surface-card/50 border border-border-glass hover:border-accent/30 transition-all">
+        <div class="flex items-baseline justify-between">
+          <h4 class="text-text-primary font-semibold">{industry.name}</h4>
+          <span class="text-accent font-bold text-lg">{industry.years}</span>
+        </div>
+
+        <div class="flex flex-wrap gap-1">
+          {industry.clients.map((client) => (
+            <span class="text-xs px-2 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
+              {client}
+            </span>
+          ))}
+        </div>
+
+        <div class="flex flex-wrap gap-1 mt-auto">
+          {industry.highlights.map((highlight) => (
+            <span class="text-xs px-2 py-0.5 rounded bg-surface-card text-text-muted">
+              {highlight}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
