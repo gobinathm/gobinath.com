@@ -7,3 +7,6 @@ node_modules/
 
 # System
 .DS_Store
+
+# Personal data (not for repo)
+*.pdf

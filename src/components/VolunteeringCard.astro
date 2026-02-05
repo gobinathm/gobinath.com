@@ -1,28 +1,28 @@
 ---
 import { site, sections } from '@/data/site';
 
-// Expand to full width if volunteering is hidden
-const colSpan = sections.volunteering ? 'lg:col-span-2' : 'lg:col-span-full';
+// Expand to full width if mentoring is hidden
+const colSpan = sections.mentoring ? 'lg:col-span-2' : 'lg:col-span-full';
 ---
 
 <div class={`glass-card p-6 md:p-8 col-span-full ${colSpan} flex flex-col gap-5 relative overflow-hidden`}>
-  <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-accent/5 pointer-events-none"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-purple-500/5 pointer-events-none"></div>
 
   <h3 class="text-text-muted text-xs font-semibold uppercase tracking-wider relative z-10">
-    {site.mentoring.headline}
+    {site.volunteering.headline}
   </h3>
 
   <p class="text-text-primary text-lg italic relative z-10" style="font-family: var(--font-serif);">
-    "{site.mentoring.quote}"
+    "{site.volunteering.quote}"
   </p>
 
-  <div class="flex flex-col gap-3 relative z-10">
-    {site.mentoring.activities.map((activity) => (
+  <div class="flex flex-col gap-3 flex-grow relative z-10">
+    {site.volunteering.activities.map((activity) => (
       <div class="flex flex-col gap-1 p-4 rounded-xl bg-surface-card/50 border border-border-glass">
         <div class="flex items-center justify-between gap-2 flex-wrap">
           <h4 class="text-text-primary font-semibold">{activity.title}</h4>
           <div class="flex items-center gap-2">
-            <span class="text-xs px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">
+            <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
               {activity.duration}
             </span>
             <span class="text-text-muted text-xs">{activity.period}</span>

@@ -10,15 +10,7 @@ import { site } from '@/data/site';
       <div class="flex flex-col gap-3 p-4 rounded-xl bg-surface-card/50 border border-border-glass hover:border-accent/30 transition-all">
         <div class="flex items-baseline justify-between">
           <h4 class="text-text-primary font-semibold">{industry.name}</h4>
-          <span class="text-accent font-bold text-lg">{industry.years}</span>
-        </div>
-
-        <div class="flex flex-wrap gap-1">
-          {industry.clients.map((client) => (
-            <span class="text-xs px-2 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
-              {client}
-            </span>
-          ))}
+          <span class="text-accent font-bold text-sm">{industry.years} yrs</span>
         </div>
 
         <div class="flex flex-wrap gap-1 mt-auto">

@@ -6,15 +6,16 @@ import SocialCard from '@/components/SocialCard.astro';
 import AtAGlanceCard from '@/components/AtAGlanceCard.astro';
 import AboutCard from '@/components/AboutCard.astro';
 import PhilosophyCard from '@/components/PhilosophyCard.astro';
-import IndustryCard from '@/components/IndustryCard.astro';
-import InsightsCard from '@/components/InsightsCard.astro';
-import TestimonialsCard from '@/components/TestimonialsCard.astro';
 import AspirationCard from '@/components/AspirationCard.astro';
+import IndustryCard from '@/components/IndustryCard.astro';
 import MentoringCard from '@/components/MentoringCard.astro';
+import VolunteeringCard from '@/components/VolunteeringCard.astro';
+import WhatPeopleSayCard from '@/components/WhatPeopleSayCard.astro';
+import InsightsCard from '@/components/InsightsCard.astro';
+import EducationCard from '@/components/EducationCard.astro';
+import CertCard from '@/components/CertCard.astro';
 import ExperienceSection from '@/components/ExperienceSection.astro';
 import SkillsSection from '@/components/SkillsSection.astro';
-import CertCard from '@/components/CertCard.astro';
-import EducationCard from '@/components/EducationCard.astro';
 import ContactCard from '@/components/ContactCard.astro';
 import pkg from '../../package.json';
 
@@ -28,48 +29,62 @@ const siteVersion = pkg.version;
 
 <Layout>
   <main class="max-w-6xl mx-auto px-4 py-8 md:py-16">
-    <!-- Bento Grid -->
+    <!-- Bento Grid - Optimized for Personal Branding -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 
-      <!-- Row 1: Hero (2x2) + Social + Stats -->
+      <!-- Section 1: First Impression -->
+      <!-- Hero (2x2) + Social + At a Glance -->
       {sections.hero && <HeroCard />}
       {sections.social && <SocialCard />}
       {sections.atAGlance && <AtAGlanceCard />}
 
-      <!-- Row 2 (fills beside hero): About (2x1) -->
+      <!-- Section 2: Who You Are -->
+      <!-- About (2x1) fills beside hero -->
       {sections.about && <AboutCard />}
 
-      <!-- Row 3: Leadership Philosophy (2x1) + Career Aspiration (2x1) -->
+      <!-- Section 3: Values & Vision -->
+      <!-- Philosophy (2x1) + Aspiration (2x1) -->
       {sections.philosophy && <PhilosophyCard />}
       {sections.aspiration && <AspirationCard />}
 
-      <!-- Row 4: Community & Mentoring (2x1) + Testimonials (2x1) -->
-      {sections.mentoring && <MentoringCard />}
-      {sections.testimonials && <TestimonialsCard />}
-
-      <!-- Row 5: Industry Expertise (full width) -->
+      <!-- Section 4: Domain Expertise -->
+      <!-- Industry Expertise (full width) -->
       {sections.industry && <IndustryCard />}
 
-      <!-- Row 6: Thought Leadership -->
+      <!-- Section 5: Community & Character -->
+      <!-- Mentoring (2x1) + Volunteering (2x1) -->
+      {sections.mentoring && <MentoringCard />}
+      {sections.volunteering && <VolunteeringCard />}
+
+      <!-- Section 6: Social Proof -->
+      <!-- What People Say (2x1) + Thought Leadership (2x1) -->
+      {sections.whatPeopleSay && <WhatPeopleSayCard />}
       {sections.insights && <InsightsCard />}
 
-      <!-- Row 7: Education + Certifications -->
+      <!-- Section 7: Credentials -->
+      <!-- Education + Certifications -->
       {sections.education && <EducationCard />}
       {sections.certifications && <CertCard />}
 
-      <!-- Row 8: Experience (full width) -->
+      <!-- Section 8: Career History -->
+      <!-- Experience (full width) -->
       {sections.experience && <ExperienceSection />}
 
-      <!-- Row 9: Skills (4 cards) -->
+      <!-- Section 9: Technical Capabilities -->
+      <!-- Skills (4 cards) -->
       {sections.skills && <SkillsSection />}
 
-      <!-- Row 10: Contact (full width) -->
+      <!-- Section 10: Call to Action -->
+      <!-- Contact (full width) -->
       {sections.contact && <ContactCard />}
     </div>
 
     <!-- Footer -->
     <footer class="text-center text-text-muted mt-12 pb-8">
       <p style="font-family: var(--font-cursive); font-size: 1.25rem;">☕ Brew by <span class="gradient-text font-bold">Gobinath Mallaiyan</span> · powered by <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">Astro</a>, <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">Tailwind</a> &amp; <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">GitHub Pages</a></p>
+      <p class="mt-3 text-xs opacity-60">
+        Views expressed here are my own and do not represent my employer or clients.
+      </p>
       <p class="mt-2 opacity-50 font-mono text-[10px]">
         v{siteVersion} · Build: {buildDate}
       </p>

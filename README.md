@@ -28,20 +28,24 @@ A modern, high-performance personal portfolio website built with **Astro 5** and
 
 Want to create your own version? Follow these steps:
 
-### 1. Clone the repository
+### 1. Fork the repository
+
+Click the **Fork** button at the top right of [this repository](https://github.com/gobinathm/gobinath.com) to create your own copy. You can rename it to your own domain (e.g., `yourname.com`) during or after forking.
+
+### 2. Clone your fork
 
 ```bash
-git clone https://github.com/gobinathm/gobinath.com.git
-cd your-portfolio
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+cd YOUR_REPO_NAME
 ```
 
-### 2. Install dependencies
+### 3. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Run development server
+### 4. Run development server
 
 ```bash
 npm run dev

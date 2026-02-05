@@ -3,7 +3,7 @@
 > Technical Program Manager with 23+ years building scalable systems in Healthcare & Enterprise Technology
 
 ## Summary
-Seasoned Technical Program Manager with over two decades of expertise in steering digital transformation, cloud architecture, and AI/ML initiatives. I bridge the gap between complex engineering challenges and strategic business objectives.
+Seasoned Technical Program Manager with over two decades of expertise in steering digital transformation, cloud architecture, and AI/ML initiatives. Currently at Tata Consultancy Services, delivering enterprise solutions for Fortune 500 clients across healthcare, pharma, and technology sectors. I bridge the gap between complex engineering challenges and strategic business objectives.
 
 ## Current Role
 - Title: Technical Program Manager
@@ -86,6 +86,10 @@ Principles:
 - Drupal Project Mentor (2014-2024): 10 years helping junior developers in open source
 - Drupal Mumbai Organizer (2015-2017): Built local tech community
 - Active Student Mentor (2022-Present): Guiding CS students to deployment-ready professionals
+
+## Publications & Articles
+- GenAI-Powered Interactive Mock Exam Using Just a Prompt (LinkedIn Article)
+- Web Platform Strategy for Static Content Sites (Publication)
 
 ## Languages
 - Tamil (Native)

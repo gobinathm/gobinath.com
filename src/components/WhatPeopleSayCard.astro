@@ -1,25 +1,32 @@
 ---
-import { site } from '@/data/site';
+import { site, sections } from '@/data/site';
+
+// Expand to full width if insights is hidden
+const colSpan = sections.insights ? 'lg:col-span-2' : 'lg:col-span-full';
+
+// Randomly select a testimonial set at build time
+const randomIndex = Math.floor(Math.random() * site.whatPeopleSaySets.length);
+const selectedSet = site.whatPeopleSaySets[randomIndex];
 ---
 
-<div class="glass-card p-6 md:p-8 col-span-full lg:col-span-2 flex flex-col gap-5 relative overflow-hidden">
+<div class={`glass-card p-6 md:p-8 col-span-full ${colSpan} flex flex-col gap-5 relative overflow-hidden`}>
   <div class="absolute top-4 right-4 text-6xl text-accent/10 font-serif pointer-events-none">"</div>
 
   <h3 class="text-text-muted text-xs font-semibold uppercase tracking-wider">What People Say</h3>
 
   <div class="flex flex-col gap-4">
-    {site.testimonials.map((testimonial, index) => (
+    {selectedSet.map((item) => (
       <div class="flex flex-col gap-2 p-4 rounded-xl bg-surface-card/50 border border-border-glass">
         <p class="text-text-primary text-sm leading-relaxed italic">
-          "{testimonial.quote}"
+          "{item.quote}"
         </p>
         <div class="flex items-center gap-2 mt-1">
           <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent text-xs font-bold">
-            {testimonial.author.charAt(0)}
+            {item.author.charAt(0)}
           </div>
           <div class="flex flex-col">
-            <span class="text-text-primary text-sm font-medium">{testimonial.author}</span>
-            <span class="text-text-muted text-xs">{testimonial.context}</span>
+            <span class="text-text-primary text-sm font-medium">{item.author}</span>
+            <span class="text-text-muted text-xs">{item.context}</span>
           </div>
         </div>
       </div>
