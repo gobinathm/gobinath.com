@@ -1,4 +1,31 @@
+# robots.txt for gobinath.com
+
 User-agent: *
 Allow: /
 
-Sitemap: https://gobinath.com/sitemap.xml
+# AI Crawlers - Welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Cohere-AI
+Allow: /
+
+# Reference files for AI
+# LLMs.txt: https://gobinath.com/llms.txt
+
+Sitemap: https://gobinath.com/sitemap-index.xml

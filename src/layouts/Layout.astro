@@ -1,5 +1,7 @@
 ---
 import { site } from '@/data/site';
+import { education, certifications } from '@/data/education';
+import { skillCategories } from '@/data/skills';
 import PrivacyBanner from '@/components/PrivacyBanner.astro';
 import '@/styles/global.css';
 
@@ -47,17 +49,67 @@ const { title = site.name, description = site.description } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
-    <!-- JSON-LD -->
+    <!-- JSON-LD Enhanced Schema -->
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'Person',
+      '@id': `${site.url}/#person`,
       name: site.name,
       url: site.url,
       jobTitle: site.title,
       description: site.description,
       image: `${site.url}${site.image}`,
+      email: `mailto:${site.email}`,
       sameAs: Object.values(site.social),
-      sameAs: Object.values(site.social),
+      workLocation: {
+        '@type': 'Place',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Toronto',
+          addressRegion: 'Ontario',
+          addressCountry: 'CA'
+        }
+      },
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Tata Consultancy Services',
+        url: 'https://www.tcs.com'
+      },
+      alumniOf: education.map(edu => ({
+        '@type': 'EducationalOrganization',
+        name: edu.institution
+      })),
+      hasCredential: certifications.slice(0, 6).map(cert => ({
+        '@type': 'EducationalOccupationalCredential',
+        name: cert.name,
+        credentialCategory: 'certification',
+        recognizedBy: {
+          '@type': 'Organization',
+          name: cert.issuer
+        }
+      })),
+      knowsAbout: skillCategories.flatMap(cat =>
+        cat.skills.filter(s => s.level >= 80).map(s => s.name)
+      ),
+      knowsLanguage: [
+        { '@type': 'Language', name: 'English' },
+        { '@type': 'Language', name: 'Tamil' }
+      ],
+      nationality: {
+        '@type': 'Country',
+        name: 'Canada'
+      }
+    })} />
+
+    <!-- WebSite Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      '@id': `${site.url}/#website`,
+      url: site.url,
+      name: `${site.name} - ${site.title}`,
+      description: site.description,
+      author: { '@id': `${site.url}/#person` }
     })} />
 
     <!-- Analytics -->

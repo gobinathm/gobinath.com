@@ -1,0 +1,95 @@
+# Gobinath Mallaiyan
+
+> Technical Program Manager with 23+ years building scalable systems in Healthcare & Enterprise Technology
+
+## Summary
+Seasoned Technical Program Manager with over two decades of expertise in steering digital transformation, cloud architecture, and AI/ML initiatives. I bridge the gap between complex engineering challenges and strategic business objectives.
+
+## Current Role
+- Title: Technical Program Manager
+- Organization: Tata Consultancy Services (TCS)
+- Client: Johnson & Johnson
+- Location: Toronto, Canada
+- Since: 2021
+
+## Contact
+- Website: https://gobinath.com
+- Email: contact@gobinath.com
+- LinkedIn: https://linkedin.com/in/gobinathm
+- GitHub: https://github.com/gobinathm
+- Medium: https://medium.com/@gobinathm
+
+## Key Facts
+- 23+ years of professional experience
+- 14+ roles held across career
+- 11+ professional certifications
+- 10+ years in Healthcare & Pharma (Johnson & Johnson, Pfizer)
+- 19+ years in Enterprise Technology
+
+## Industry Expertise
+- Healthcare & Pharma: Regulatory Compliance, HIPAA, FDA Guidelines, Clinical Systems
+- Enterprise Technology: Global Delivery, Platform Modernization, Digital Transformation
+- Life Sciences: Content Platforms, Multilingual Systems, Enterprise CMS
+
+## Core Skills
+### Leadership & Strategy
+- Program Management
+- Enterprise Architecture
+- Solutions Architecture
+- Agile & Scrum
+- Stakeholder Management
+
+### Cloud & DevOps
+- AWS (Certified Cloud Practitioner, AI Practitioner)
+- Azure
+- Google Cloud
+- Docker
+- CI/CD
+- DevOps
+
+### AI & Machine Learning
+- Generative AI
+- Large Language Models
+- Prompt Engineering
+- AI Strategy & Governance
+- RAG (Retrieval Augmented Generation)
+
+### Web & Development
+- PHP, JavaScript, Python, TypeScript
+- React, Node.js
+- CMS (Drupal, WordPress)
+- Static Site Generators (Astro, Hugo, Gatsby)
+
+## Certifications
+- AWS Certified AI Practitioner (2026)
+- AWS Certified Cloud Practitioner (2024)
+- GitHub Actions (2026)
+- LeanIX Certified EAM Practitioner (2025)
+- Generative AI Fundamentals - Databricks (2024)
+- Strategic Transformation Advisor - INSEAD (2022)
+- Certified ScrumMaster (2009)
+- Acquia Certified Developer (2014)
+
+## Education
+- M.Sc Computer Science - Hindusthan College of Arts and Science (2001-2003)
+- B.Sc Computer Science - Hindusthan College of Arts and Science (1997-2001)
+
+## Leadership Philosophy
+"I don't lead from above — I lead beside. I mentor, share, and build shoulder-to-shoulder with my teams."
+
+Principles:
+- People-First: Great leadership is about empowerment, not control
+- Lead by Example: Jump in where needed, ensure no one is left behind
+- Servant Leadership: Teaching, mentoring, and evolving with the team
+
+## Community & Mentoring
+- Drupal Project Mentor (2014-2024): 10 years helping junior developers in open source
+- Drupal Mumbai Organizer (2015-2017): Built local tech community
+- Active Student Mentor (2022-Present): Guiding CS students to deployment-ready professionals
+
+## Languages
+- Tamil (Native)
+- English (Professional Working)
+
+## What Drives Me
+Building toward a future where technical depth, people-first leadership, and product thinking converge to create strategic impact at scale.
