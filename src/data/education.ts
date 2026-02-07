@@ -20,6 +20,7 @@ export const education: Education[] = [
 ];
 
 export const certifications: Certification[] = [
+  { name: 'Microsoft Certified: AI Transformation Leader', issuer: 'Microsoft', groups: ['Cloud', 'AI/ML', 'Enterprise'], year: 'Feb 2026', sortDate: '2026-02', url: 'https://learn.microsoft.com/api/credentials/share/en-us/gobinathm/67271D9ACA6E19F5?sharingId=DF3DC239EE30F0A4' },
   { name: 'AWS Certified AI Practitioner', issuer: 'Amazon Web Services', groups: ['AWS', 'Cloud', 'AI/ML'], year: 'Jan 2026', sortDate: '2026-01', url: 'https://www.credly.com/badges/4f172763-a79b-44af-9439-e30871aacbb5/public_url' },
   { name: 'GitHub Actions', issuer: 'Microsoft', groups: ['DevOps'], year: 'Jan 2026', sortDate: '2026-01', url: 'https://learn.microsoft.com/api/credentials/share/en-us/gobinathm/1D482C674772339' },
   { name: 'LeanIX Certified EAM Practitioner', issuer: 'SAP LeanIX', groups: ['Enterprise'], year: 'Mar 2025', sortDate: '2025-03', url: 'https://verify.skilljar.com/c/9v7tz4m9ydhc' },
