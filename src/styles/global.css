@@ -112,6 +112,12 @@ html {
   background-size: 100% 100%;
 }
 
+@media (max-width: 768px) {
+  html {
+    background-attachment: scroll;
+  }
+}
+
 body {
   font-family: var(--font-sans);
   min-height: 100vh;
