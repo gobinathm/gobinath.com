@@ -4,7 +4,7 @@ import { site } from '@/data/site';
 import profilePhoto from '@/assets/gobi.png';
 ---
 
-<div class="glass-card p-8 md:p-10 col-span-full lg:col-span-2 row-span-2 flex flex-col items-center justify-center text-center gap-6 relative overflow-hidden">
+<header class="glass-card p-8 md:p-10 col-span-full lg:col-span-2 row-span-2 flex flex-col items-center justify-center text-center gap-6 relative overflow-hidden">
   <!-- Subtle gradient bg -->
   <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-purple-500/5 pointer-events-none"></div>
 
@@ -26,5 +26,13 @@ import profilePhoto from '@/assets/gobi.png';
     {site.location}
   </div>
 
-  <img src="/img/Sign.png" alt="Signature" class="absolute bottom-2 right-2 h-8 md:h-12 w-auto opacity-30 -rotate-12 dark:invert pointer-events-none" />
-</div>
+  <!-- Optimized Signature Image -->
+  <Image 
+    src={import('@/assets/Sign.png')} 
+    alt="Signature" 
+    width={200} 
+    height={80} 
+    class="absolute bottom-2 right-2 h-8 md:h-12 w-auto opacity-30 -rotate-12 dark:invert pointer-events-none" 
+    format="webp"
+  />
+</header>
