@@ -85,12 +85,6 @@ export const site = {
       url: 'https://www.linkedin.com/pulse/genai-powered-interactive-mock-exam-using-just-prompt-mallaiyan-zkogc',
       description: 'Exploring how generative AI can create dynamic, personalized learning experiences.',
     },
-    {
-      title: 'Web Platform Strategy for Static Content Sites',
-      type: 'Publication',
-      url: '#',
-      description: 'Strategic framework for building performant, secure static content platforms.',
-    },
   ],
 
   // Community & Mentoring

@@ -89,7 +89,6 @@ Principles:
 
 ## Publications & Articles
 - GenAI-Powered Interactive Mock Exam Using Just a Prompt (LinkedIn Article)
-- Web Platform Strategy for Static Content Sites (Publication)
 
 ## Languages
 - Tamil (Native)
