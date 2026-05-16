@@ -1,16 +1,16 @@
 # Gobinath.com v2
 
-![Astro](https://img.shields.io/badge/Astro-5.0-BC52EE?style=for-the-badge&logo=astro&logoColor=white)
+![Astro](https://img.shields.io/badge/Astro-6.0-BC52EE?style=for-the-badge&logo=astro&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Deploy](https://github.com/gobinathm/gobinath.com/actions/workflows/deploy.yml/badge.svg)
 
-A modern, high-performance personal portfolio website built with **Astro 5** and **Tailwind CSS 4**. Featuring a glassmorphism bento-grid design, zero-JavaScript default performance, and extensive accessibility optimizations.
+A modern, high-performance personal portfolio website built with **Astro 6** and **Tailwind CSS 4**. Featuring a glassmorphism bento-grid design, zero-JavaScript default performance, and extensive accessibility optimizations.
 
 ## 🚀 Features
 
-- **High Performance**: Built with Astro 5 static site generation. Zero client-side JS by default.
+- **High Performance**: Built with Astro 6 static site generation. Zero client-side JS by default.
 - **Modern Design**: Glassmorphism UI, bento-grid layout, and subtle animated mesh gradients.
 - **Dark Mode First**: Optimized for dark themes with deeply integrated Tailwind v4 variables.
 - **Accessibility**: WCAG 2.1 AA compliant colors and semantic HTML.
@@ -19,7 +19,7 @@ A modern, high-performance personal portfolio website built with **Astro 5** and
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Astro 5](https://astro.build/)
+- **Framework**: [Astro 6](https://astro.build/)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **Deployment**: GitHub Pages (Standard Workflow)
 - **Icons**: Simple Icons (via SVG paths) & Lucide
@@ -42,13 +42,13 @@ cd YOUR_REPO_NAME
 ### 3. Install dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 4. Run development server
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Visit `http://localhost:4321` to see your site.
@@ -69,7 +69,7 @@ This template is designed to be easily customizable via data files. You don't ne
 To create a production build:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 This project comes with a ready-to-use **GitHub Actions Workflow** in `.github/workflows/deploy.yml` that automatically deploys to GitHub Pages on every push to `main`.
