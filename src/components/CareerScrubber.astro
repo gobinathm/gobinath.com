@@ -1,0 +1,61 @@
+---
+import { experience } from '@/data/experience';
+
+// Oldest first. Without JS the card shows the current role.
+const roles = [...experience].sort((a, b) => Number(a.year) - Number(b.year));
+const first = Number(roles[0].year);
+const last = new Date().getFullYear();
+const current = roles[roles.length - 1];
+---
+
+<div class="glass-card depth p-6 md:p-8 col-span-full lg:col-span-2 flex flex-col gap-5" data-scrubber
+  data-roles={JSON.stringify(roles)} data-first={first}>
+  <div class="flex items-baseline justify-between gap-4">
+    <h3 class="text-text-primary text-lg font-semibold">Scrub through my career</h3>
+    <span class="text-text-muted text-sm" data-scrub-count>{roles.length} roles</span>
+  </div>
+
+  <div class="flex items-end gap-5">
+    <output class="scrub-year font-display text-6xl md:text-7xl text-accent tabular-nums leading-none" data-scrub-year>{last}</output>
+    <div class="pb-1 min-w-0">
+      <p class="text-text-primary font-semibold truncate" data-scrub-role>{current.role}</p>
+      <p class="text-text-muted text-sm" data-scrub-company>{current.company}</p>
+    </div>
+  </div>
+
+  <p class="text-text-secondary text-sm leading-relaxed min-h-[3em]" data-scrub-desc>{current.description}</p>
+
+  <div>
+    <label for="scrub" class="sr-only">Choose a year</label>
+    <input id="scrub" type="range" min={first} max={last} value={last} step="1" class="scrub-range w-full" hidden />
+    <div class="flex justify-between text-text-muted text-xs mt-2" aria-hidden="true">
+      <span>{first}</span><span>Drag me</span><span>{last}</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  type Role = { year: string; role: string; company: string; description: string };
+  document.querySelectorAll<HTMLElement>('[data-scrubber]').forEach(card => {
+    const roles: Role[] = JSON.parse(card.dataset.roles!);
+    const first = Number(card.dataset.first);
+    const range = card.querySelector<HTMLInputElement>('input[type=range]')!;
+    const $ = (k: string) => card.querySelector<HTMLElement>(`[data-scrub-${k}]`)!;
+    range.hidden = false;
+
+    const show = (year: number) => {
+      // The role held in that year = the latest role that started on or before it
+      let r = roles[0];
+      for (const x of roles) if (Number(x.year) <= year) r = x;
+      $('year').textContent = String(year);
+      $('role').textContent = r.role;
+      $('company').textContent = r.company;
+      $('desc').textContent = r.description;
+      $('count').textContent = `${year - first} years in`;
+      range.setAttribute('aria-valuetext', `${year}: ${r.role}, ${r.company}`);
+      card.style.setProperty('--progress', String((year - first) / (Number(range.max) - first)));
+    };
+    range.addEventListener('input', () => show(Number(range.value)));
+    show(Number(range.value));
+  });
+</script>

@@ -16,7 +16,6 @@ export interface Certification {
 export const education: Education[] = [
   { degree: 'M.Sc Computer Science', institution: 'Hindusthan College of Arts and Science', years: '2001 – 2003' },
   { degree: 'B.Sc Computer Science', institution: 'Hindusthan College of Arts and Science', years: '1997 – 2001' },
-  { degree: 'Grade 12', institution: 'RVS Matriculation Higher Secondary School', years: '1998' },
 ];
 
 export const certifications: Certification[] = [

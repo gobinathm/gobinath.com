@@ -1,0 +1,39 @@
+---
+import { site } from '@/data/site';
+const e = site.endurance;
+---
+
+<!-- Flip card: front = results, back = what endurance taught. Click/tap or Enter to flip. -->
+<div class="flip col-span-full lg:col-span-2" data-flip>
+  <div class="flip-inner">
+    <div class="flip-face glass-card depth p-6 md:p-7 flex flex-col gap-4">
+      <div class="flex items-baseline justify-between">
+        <h3 class="text-text-primary text-lg font-semibold">{e.headline}</h3>
+        <button type="button" class="flip-btn text-xs text-accent hover:underline cursor-pointer" aria-expanded="false">Flip for the lesson</button>
+      </div>
+      <ul class="grid grid-cols-3 gap-3">
+        {e.results.map(r => (
+          <li class="rounded-xl bg-accent/10 border border-accent/20 p-3">
+            <span class="block font-display text-4xl text-text-primary leading-none" style="font-stretch:140%; font-weight:900">{r.value}</span>
+            <span class="block mt-2 text-text-secondary text-xs leading-snug">{r.label}</span>
+          </li>
+        ))}
+      </ul>
+      <ul class="text-text-secondary text-sm space-y-1">
+        {e.notes.map(n => <li>{n}</li>)}
+        <li class="text-emerald-400/90">{e.family}</li>
+      </ul>
+    </div>
+
+    <div class="flip-face flip-back glass-card depth p-6 md:p-7 flex flex-col gap-4" aria-hidden="true">
+      <div class="flex items-baseline justify-between">
+        <h3 class="text-text-primary text-lg font-semibold">{e.lesson.title}</h3>
+        <button type="button" class="flip-btn text-xs text-accent hover:underline cursor-pointer" tabindex="-1">Flip back</button>
+      </div>
+      <p class="text-text-secondary leading-relaxed">{e.lesson.text}</p>
+      <div class="mt-auto flex gap-3">
+        {e.links.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:underline" tabindex="-1">{l.name}</a>)}
+      </div>
+    </div>
+  </div>
+</div>

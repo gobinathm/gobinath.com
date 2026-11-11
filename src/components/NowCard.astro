@@ -1,0 +1,23 @@
+---
+import { site } from '@/data/site';
+const now = site.now;
+---
+
+<div class="glass-card depth p-6 md:p-7 col-span-full md:col-span-1 lg:col-span-2 flex flex-col gap-4">
+  <div class="flex items-baseline justify-between gap-4">
+    <h3 class="text-text-primary text-lg font-semibold flex items-center gap-2">
+      <span class="live-dot" aria-hidden="true"></span> Now
+    </h3>
+    <span class="text-text-muted text-xs">Updated {now.updated}</span>
+  </div>
+  <dl class="grid gap-3">
+    {now.items.map(i => (
+      <div class="grid grid-cols-[6.5rem_1fr] gap-3 text-sm">
+        <dt class="text-text-muted">{i.label}</dt>
+        <dd class="text-text-primary">
+          {i.url ? <a href={i.url} target="_blank" rel="noopener noreferrer" class="hover:text-accent underline decoration-border-glass-hover underline-offset-4">{i.text}</a> : i.text}
+        </dd>
+      </div>
+    ))}
+  </dl>
+</div>

@@ -1,0 +1,69 @@
+---
+import { site } from '@/data/site';
+const e = site.endurance;
+---
+
+<!-- Hidden extra: type "g" then "r" anywhere to open race splits. -->
+<dialog id="race-splits" class="splits glass-card depth p-0 max-w-md w-[calc(100%-2rem)] text-text-primary backdrop:bg-black/60">
+  <div class="p-6 md:p-8">
+    <p class="text-accent text-sm font-semibold">You found the race splits</p>
+    <h2 class="mt-1 font-display text-3xl" style="font-stretch:125%; font-weight:850">Off the clock, by the numbers</h2>
+    <ul class="mt-6 divide-y divide-border-glass">
+      {e.results.map(r => (
+        <li class="flex justify-between py-3"><span class="text-text-secondary">{r.label}</span><span class="font-display text-2xl" style="font-weight:850">{r.value}</span></li>
+      ))}
+    </ul>
+    <p class="mt-5 text-text-muted text-sm">{e.family}</p>
+    <form method="dialog" class="mt-6"><button class="px-4 py-2 rounded-xl bg-accent/15 text-accent hover:bg-accent/25 cursor-pointer">Back to the site</button></form>
+  </div>
+</dialog>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = matchMedia('(pointer: fine)').matches;
+
+  // 1. Cursor spotlight + gentle tilt on .depth cards (desktop, motion allowed)
+  if (finePointer && !reduce) {
+    document.querySelectorAll<HTMLElement>('main .glass-card, .depth').forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        card.style.setProperty('--mx', `${x * 100}%`);
+        card.style.setProperty('--my', `${y * 100}%`);
+        if (!card.closest('[data-flip]')) {
+          card.style.setProperty('--rx', `${(0.5 - y) * 3}deg`);
+          card.style.setProperty('--ry', `${(x - 0.5) * 3}deg`);
+        }
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.removeProperty('--rx'); card.style.removeProperty('--ry');
+      });
+    });
+  }
+
+  // 2. Flip cards
+  document.querySelectorAll<HTMLElement>('[data-flip]').forEach(flip => {
+    const [front, back] = flip.querySelectorAll<HTMLElement>('.flip-face');
+    const set = (on: boolean) => {
+      flip.classList.toggle('is-flipped', on);
+      front.setAttribute('aria-hidden', String(on));
+      back.setAttribute('aria-hidden', String(!on));
+      front.querySelectorAll<HTMLElement>('a,button').forEach(el => el.tabIndex = on ? -1 : 0);
+      back.querySelectorAll<HTMLElement>('a,button').forEach(el => el.tabIndex = on ? 0 : -1);
+      front.querySelector('.flip-btn')?.setAttribute('aria-expanded', String(on));
+      (on ? back : front).querySelector<HTMLElement>('.flip-btn')?.focus({ preventScroll: true });
+    };
+    flip.querySelectorAll('.flip-btn').forEach(b => b.addEventListener('click', () => set(!flip.classList.contains('is-flipped'))));
+  });
+
+  // 3. Easter egg: "g" then "r"
+  const dlg = document.getElementById('race-splits') as HTMLDialogElement | null;
+  let last = '';
+  document.addEventListener('keydown', e => {
+    const t = e.target as HTMLElement;
+    if (e.metaKey || e.ctrlKey || e.altKey || t.closest('input,textarea,select,[contenteditable]')) return;
+    const k = e.key.toLowerCase();
+    if (last === 'g' && k === 'r' && dlg && !dlg.open) dlg.showModal();
+    last = k;
+  });
+</script>

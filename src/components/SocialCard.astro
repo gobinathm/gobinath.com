@@ -20,7 +20,7 @@ const socials = [
   <div class="flex flex-wrap justify-center gap-2">
     {socials.map(s => (
       <a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.name}
-        class="flex items-center justify-center w-12 h-12 rounded-xl bg-surface-card hover:bg-accent/10 border border-border-glass hover:border-accent/30 transition-all duration-300 hover:scale-105 group">
+        class="flex items-center justify-center w-12 h-12 rounded-xl bg-surface-card hover:bg-accent/10 border border-border-glass hover:border-accent/30 transition-all duration-300 group">
         <svg class="w-5 h-5 text-text-muted group-hover:text-accent transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <title>{s.name}</title>
           <path d={s.icon} />

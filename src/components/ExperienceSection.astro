@@ -2,9 +2,9 @@
 import { experience } from '@/data/experience';
 ---
 
-<div class="glass-card p-6 md:p-8 col-span-full overflow-hidden">
+<div class="glass-card card-feature p-6 md:p-8 col-span-full overflow-hidden">
   <div class="flex items-center justify-between mb-6">
-    <h3 class="text-text-muted text-xs font-semibold uppercase tracking-wider">Experience</h3>
+    <h3 class="text-text-primary text-lg font-semibold">Experience</h3>
     <div class="flex gap-2">
       <button id="exp-left" class="w-8 h-8 rounded-lg bg-surface-card border border-border-glass flex items-center justify-center text-text-muted hover:text-accent hover:border-accent/30 transition-all disabled:opacity-30" disabled>
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
@@ -15,8 +15,8 @@ import { experience } from '@/data/experience';
     </div>
   </div>
   <div class="relative">
-    <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-surface-card to-transparent z-10 pointer-events-none opacity-0 transition-opacity" id="exp-fade-left"></div>
-    <div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-surface-card to-transparent z-10 pointer-events-none" id="exp-fade-right"></div>
+    <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-surface-feature to-transparent z-10 pointer-events-none opacity-0 transition-opacity" id="exp-fade-left"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-surface-feature to-transparent z-10 pointer-events-none" id="exp-fade-right"></div>
     <div class="flex gap-4 overflow-x-auto pb-2 scroll-smooth" id="exp-scroll" style="scrollbar-width: none; -ms-overflow-style: none;">
       {experience.map((exp) => (
         <div class="flex-shrink-0 w-56 p-5 rounded-2xl bg-surface-card border border-border-glass hover:border-accent/30 hover:bg-surface-card-hover transition-all duration-300 group">
