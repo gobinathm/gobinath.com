@@ -1,8 +1,12 @@
 ---
+import { yearsExperience } from '@/data/site';
+import { experience } from '@/data/experience';
+import { certifications } from '@/data/education';
+
 const stats = [
-  { value: 22, label: 'Years Experience' },
-  { value: 14, label: 'Roles Held' },
-  { value: 12, label: 'Certifications' },
+  { value: yearsExperience, label: 'Years Experience' },
+  { value: experience.length, label: 'Roles Held' },
+  { value: certifications.length, label: 'Certifications' },
 ];
 ---
 
@@ -11,7 +15,7 @@ const stats = [
   <div class="flex flex-col gap-3">
     {stats.map(s => (
       <div class="flex items-baseline gap-2">
-        <span data-count={s.value} class="text-2xl font-bold gradient-text">{s.value}+</span>
+        <span class="text-2xl font-bold text-text-primary">{s.value}</span>
         <span class="text-text-secondary text-sm">{s.label}</span>
       </div>
     ))}

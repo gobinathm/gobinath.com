@@ -5,14 +5,12 @@ export interface Skill {
 
 export interface SkillCategory {
   name: string;
-  icon: string;
   skills: Skill[];
 }
 
 export const skillCategories: SkillCategory[] = [
   {
     name: 'Leadership & Strategy',
-    icon: '🎯',
     skills: [
       { name: 'Program Management', level: 95 },
       { name: 'IT Project Management', level: 85 },
@@ -25,7 +23,6 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     name: 'Cloud & DevOps',
-    icon: '☁️',
     skills: [
       { name: 'AWS', level: 90 },
       { name: 'Azure', level: 75 },
@@ -42,7 +39,6 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     name: 'AI & Machine Learning',
-    icon: '🤖',
     skills: [
       { name: 'AI/ML', level: 90 },
       { name: 'Generative AI', level: 85 },
@@ -57,7 +53,6 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     name: 'Web & Development',
-    icon: '💻',
     skills: [
       { name: 'Python', level: 70 },
       { name: 'PHP', level: 95 },

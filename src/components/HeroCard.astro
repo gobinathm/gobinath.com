@@ -1,21 +1,19 @@
 ---
 import { Image } from 'astro:assets';
 import { site } from '@/data/site';
-import profilePhoto from '@/assets/gobi.png';
+import profilePhoto from '@/assets/photos/portrait.png';
 ---
 
 <header class="glass-card p-8 md:p-10 col-span-full lg:col-span-2 row-span-2 flex flex-col items-center justify-center text-center gap-6 relative overflow-hidden">
-  <!-- Subtle gradient bg -->
-  <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-purple-500/5 pointer-events-none"></div>
 
   <div class="relative">
-    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-2 ring-accent/30 animate-pulse-ring">
+    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-1 ring-border-glass">
       <Image src={profilePhoto} alt={`Profile photo of ${site.name}`} width={160} height={160} class="w-full h-full object-cover" loading="eager" />
     </div>
   </div>
 
   <div class="relative z-10">
-    <h1 class="text-3xl md:text-5xl font-bold gradient-text pb-2" style="font-family: var(--font-serif);">{site.name}</h1>
+    <h1 class="name-brush text-4xl md:text-6xl text-text-primary pb-2">{site.name}</h1>
     <p class="text-text-secondary mt-2 text-lg font-medium">{site.title}</p>
     <p class="text-accent text-sm mt-2 font-semibold tracking-wide">{site.tagline}</p>
     <p class="text-text-muted text-xs mt-1">{site.subtitle}</p>

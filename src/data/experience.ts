@@ -6,7 +6,7 @@ export interface Experience {
 }
 
 export const experience: Experience[] = [
-  { year: '2021', role: 'Technical Program Manager', company: 'Tata Consultancy Services', description: 'Leading cross-functional programs in AI/ML and cloud transformation initiatives.' },
+  { year: '2021', role: 'Technical Program Manager', company: 'Tata Consultancy Services', description: 'Leading cross-functional AI/ML and cloud transformation programs.' },
   { year: '2016', role: 'Program Manager', company: 'Tata Consultancy Services', description: 'Managed large-scale digital transformation programs for enterprise clients.' },
   { year: '2014', role: 'Program Manager', company: 'Tata Consultancy Services', description: 'Oversaw multi-stream program delivery and stakeholder management.' },
   { year: '2013', role: 'Project Manager (EA)', company: 'Tata Consultancy Services', description: 'Led enterprise architecture projects and technology roadmap planning.' },

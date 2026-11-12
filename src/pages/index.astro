@@ -17,6 +17,10 @@ import CertCard from '@/components/CertCard.astro';
 import ExperienceSection from '@/components/ExperienceSection.astro';
 import SkillsSection from '@/components/SkillsSection.astro';
 import ContactCard from '@/components/ContactCard.astro';
+import CareerScrubber from '@/components/CareerScrubber.astro';
+import NowCard from '@/components/NowCard.astro';
+import EnduranceCard from '@/components/EnduranceCard.astro';
+import Interactions from '@/components/Interactions.astro';
 import pkg from '../../package.json';
 
 const buildDate = new Date().toLocaleDateString('en-US', {
@@ -41,9 +45,11 @@ const siteVersion = pkg.version;
       <!-- Section 2: Who You Are -->
       <!-- About (2x1) fills beside hero -->
       {sections.about && <AboutCard />}
+      {sections.scrubber && <CareerScrubber />}
+      {sections.now && <NowCard />}
 
       <!-- Section 3: Values & Vision -->
-      <!-- Philosophy (2x1) + Aspiration (2x1) -->
+      <!-- Philosophy (full width) + Aspiration (full width, horizontal timeline) -->
       {sections.philosophy && <PhilosophyCard />}
       {sections.aspiration && <AspirationCard />}
 
@@ -57,9 +63,10 @@ const siteVersion = pkg.version;
       {sections.volunteering && <VolunteeringCard />}
 
       <!-- Section 6: Social Proof -->
-      <!-- What People Say (2x1) + Thought Leadership (2x1) -->
-      {sections.whatPeopleSay && <WhatPeopleSayCard />}
+      <!-- What People Say (2x1) + Writing (2x1) -->
+      {sections.endurance && <EnduranceCard />}
       {sections.insights && <InsightsCard />}
+      {sections.whatPeopleSay && <WhatPeopleSayCard />}
 
       <!-- Section 7: Credentials -->
       <!-- Education + Certifications -->
@@ -81,7 +88,8 @@ const siteVersion = pkg.version;
 
     <!-- Footer -->
     <footer class="text-center text-text-muted mt-12 pb-8">
-      <p style="font-family: var(--font-cursive); font-size: 1.25rem;">☕ Brew by <span class="gradient-text font-bold">Gobinath Mallaiyan</span> · powered by <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">Astro</a>, <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">Tailwind</a> &amp; <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">GitHub Pages</a></p>
+      <p class="text-sm">Built by <span class="text-text-primary font-medium">Gobinath Mallaiyan</span> · powered by <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">Astro</a>, <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">Tailwind</a> &amp; <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer" class="text-accent/60 hover:text-accent transition-colors">GitHub Pages</a></p>
+      <p class="mt-3 text-xs opacity-70">Anonymous visit counts via Umami. No cookies, no personal data. <a href="/privacy" class="underline hover:text-accent">Privacy</a></p>
       <p class="mt-3 text-xs opacity-60">
         Views expressed here are my own and do not represent my employer or clients.
       </p>
@@ -90,4 +98,5 @@ const siteVersion = pkg.version;
       </p>
     </footer>
   </main>
+  <Interactions />
 </Layout>
